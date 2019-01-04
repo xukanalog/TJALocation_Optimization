@@ -89,6 +89,12 @@ def Excel_Write(ExchangeResult):
     :param ExchangeResult: list [{PositionCode:(ProductCode,Qty),PositionCode:(ProductCode,Qty)}]
     :return: excel
     '''
+    count = 0
+    for exchangeresult in ExchangeResult:
+        for key,value in exchangeresult.items():
+            ExchangeResult[count][key] = value[0]
+        count += 1
+
     workbook = xlwt.Workbook()
     worksheet = workbook.add_sheet('Result')
     FirstCol = worksheet.col(0) #xlwt中是行和列都是从0开始计算的
@@ -99,7 +105,7 @@ def Excel_Write(ExchangeResult):
     for exchangeresult in ExchangeResult:
         column = 0
         for key,value in exchangeresult.items():
-            worksheet.write(count,column,str(key) + str(value))
+            worksheet.write(count,column,str(key) + ' ' * 5 + str(value))
             column += 1
         count = count + 1
     workbook.save('./excel/ExchangeResult.xls')
@@ -117,7 +123,7 @@ def Location_Optimization(YesTimeFormat,CurTimeFormat,RowsChange,RowsChangePerTi
     ##TransData1 = Data_Processing(Init_Data1)  # 数据处理
     Init_Data1 = dbquery.Get_RealData(YesTimeFormat + ' 12:00:00', CurTimeFormat + ' 1:00:00')  # 得到数据库原始数据(根据计划出库时间)
     TransData1 = Data_Processing(Init_Data1)  # 数据处理
-    Init_Data = dbquery.Get_OrderData('2018-12-25 17:00:00.000',YesTimeFormat + ' 8:00:00',YesTimeFormat + ' 12:00:00', CurTimeFormat + ' 1:00:00')  # 得到数据库原始数据(根据订单流入时间)
+    Init_Data = dbquery.Get_OrderData('2019-01-01 17:00:00.000',YesTimeFormat + ' 8:00:00',YesTimeFormat + ' 12:00:00', CurTimeFormat + ' 1:00:00')  # 得到数据库原始数据(根据订单流入时间)
     TransData = Data_Processing(Init_Data)  #数据处理
     OptimizaAnalyseBefore = OptimizaAnalyse.Channel_Standard(TransData1)
     ChannelqtyAverage =  Channelqty_Average(TransData)

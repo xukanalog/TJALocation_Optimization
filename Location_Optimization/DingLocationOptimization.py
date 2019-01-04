@@ -5,9 +5,14 @@ import ChatbotInit
 
 if __name__ == '__main__':
     CurTime = datetime.datetime.now()
+    #CurTimeFormat = CurTime.strftime("%Y-%m-%d")
+    #YesTimeFormat = (CurTime - datetime.timedelta(days = 1)).strftime("%Y-%m-%d")
+    #OptimizaAnalyseBefore, OptimizaAnalyseAfter = LocationOptimization.Location_Optimization(YesTimeFormat, CurTimeFormat,5,5)
+
     CurTimeFormat = CurTime.strftime("%Y-%m-%d")
-    YesTimeFormat = (CurTime - datetime.timedelta(days = 1)).strftime("%Y-%m-%d")
-    OptimizaAnalyseBefore, OptimizaAnalyseAfter = LocationOptimization.Location_Optimization(YesTimeFormat, CurTimeFormat)
+    TorTimeFormat = (CurTime + datetime.timedelta(days = 1)).strftime("%Y-%m-%d")
+    OptimizaAnalyseBefore, OptimizaAnalyseAfter = LocationOptimization.Location_Optimization(CurTimeFormat,TorTimeFormat,5,5)
+
     ImageName = ExcelScreenShots.Excel_CatchScreen(
         "D:/alog/天津仓/Algorithm/Dingtalk/Location_Optimization/excel/ExchangeResult.xls", "Result", "A1:B10")
 

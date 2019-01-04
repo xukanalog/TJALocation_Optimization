@@ -26,6 +26,7 @@ queryorderdata += "left join V_t_Storage_Position SPO on SPO.PositionCode = SPD.
 queryorderdata += "where SPO.Abc_Type = 'A' and SPO.StorageCode = 'ALOG-0003-03' AND O.OrderTime >= {} "
 queryorderdata += "AND O.OrderTime <= {} AND O.PlanOutTime >= {}  AND O.PlanOutTime <= {} and O.CancelbyWLB = 0 group by SPD.ProductCode,SPD.PositionCode "
 
+
 queryoptimiza = "select ARM.ProductCode,SQ.PositionCode,ARM.PlanQty from V_t_Algorithm_RMSSalesPlan ARM "
 queryoptimiza += "left join V_t_Storage_Qty SQ on ARM.ProductCode = SQ.ProductCode "
 queryoptimiza += "left join V_t_Storage_Position SPO on SPO.PositionCode = SQ.PositionCode "
