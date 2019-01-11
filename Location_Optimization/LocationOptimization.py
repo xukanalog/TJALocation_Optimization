@@ -150,10 +150,11 @@ def Location_Optimization(YesTimeFormat,CurTimeFormat,RowsChange,RowsChangePerTi
         if MaxFlag == 1:
             ExchangeResult.append(copy.deepcopy(ExchangeTemp))
             ExchangeTemp.clear()
-    Excel_Write(ExchangeResult)
+
     #OptimizaAnalyseAfter = OptimizaAnalyse.Channel_Standard(TransData)
     ChannelAfterExchangeResult = OptimizaAnalyse.Channel_AfterExchangeResult(TransData1 ,ExchangeResult)  #采用ExchangeResult交换方案对TransData进行交换的结果
     OptimizaAnalyseAfter = OptimizaAnalyse.Channel_Standard(ChannelAfterExchangeResult)   #标准差计算
+    Excel_Write(ExchangeResult)
     return OptimizaAnalyseBefore, OptimizaAnalyseAfter
 
 #OptimizaAnalyseBefore, OptimizaAnalyseAfter = Location_Optimization("2018-12-25","2018-12-26")

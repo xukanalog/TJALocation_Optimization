@@ -1,0 +1,7 @@
+2019.1.4 V1.0.1
+1.基础版本代码，包含监控，测试等；
+
+2019.1.4 V1.0.2
+1.A类存在一品多位情况，修复Output Data_Processing函数，增加else部分；
+2.修复Output WriteResult函数，对实际调换情况进行更新，由原来的DataProcess.Data_Processing
+返回productcode:qty以及productcode:position，换为直接使用ProductCode:(PositionCode,Qty)}

@@ -32,7 +32,7 @@ def Get_OrderData(PlanTime1,PlanTime2,PlanOutTime1,PlanOutTime2):
     PlanTime2 = "'" + PlanTime2 + "'"
     PlanOutTime1 = "'" + PlanOutTime1 + "'"
     PlanOutTime2 = "'" + PlanOutTime2 + "'"
-    query = config.queryorderdata.format(PlanTime1,PlanTime2,PlanOutTime1,PlanOutTime2)
+    query = config.queryorderinflowdata.format(PlanTime1,PlanTime2,PlanOutTime1,PlanOutTime2)
     cursor.execute(query)
     result = cursor.fetchall()
     cursor.close()

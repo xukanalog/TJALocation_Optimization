@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     CurTimeFormat = CurTime.strftime("%Y-%m-%d")
     TorTimeFormat = (CurTime + datetime.timedelta(days = 1)).strftime("%Y-%m-%d")
-    OptimizaAnalyseBefore, OptimizaAnalyseAfter = LocationOptimization.Location_Optimization(CurTimeFormat,TorTimeFormat,5,5)
+    OptimizaAnalyseBefore, OptimizaAnalyseAfter = LocationOptimization.Location_Optimization(CurTimeFormat,TorTimeFormat,20,20)
 
     ImageName = ExcelScreenShots.Excel_CatchScreen(
         "D:/alog/天津仓/Algorithm/Dingtalk/Location_Optimization/excel/ExchangeResult.xls", "Result", "A1:B10")
